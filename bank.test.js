@@ -54,20 +54,5 @@ describe("Bank", () =>{
       expect(halifax.printStatement()).toEqual(modelStatement)
     })
   })
-
-  describe("dateFormatter", () =>{
-    it("returns a date as a string value in the expected format", () =>{
-      let modelDate = "14/01/2023"
-      expect(bank.dateFormatter(new Date("January 14, 2023"))).toEqual(modelDate)
-    })
-  })
-
-  describe("resultFormatter", () =>{
-    it("should format the newly created array to be ready for printing", ()=>{
-      let input = ["1", "2", "3", "4"]
-      let modelResult = " date || credit || debit || balance\n4\n3\n2\n1"
-      expect(bank.resultFormatter(input)).toBe(modelResult)
-    })
-  })
-
 })
+
