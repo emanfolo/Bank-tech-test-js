@@ -36,7 +36,14 @@ class Bank {
     return result 
   }
 
-  printStatement(){
+  resultFormatter(result){
+    result.reverse()
+    result.unshift(" date || credit || debit || balance")
+    let formatted = result.join("\n")
+    return formatted
+  }
+
+  calculateStatement(){
     let balance = 0
     let result = []
     for (let i = 0; i < this.transactionHistory.length; i++){
@@ -45,9 +52,12 @@ class Bank {
       balance += index.balanceChange
       result.push(` ${formattedDate} || ${index.credit == 0 ? "" : index.credit.toFixed(2)} || ${index.debit == 0 ? "" : index.debit.toFixed(2)} || ${balance.toFixed(2)}`)
     }
-    result.reverse()
-    result.unshift(" date || credit || debit || balance")
-    let printOut = result.join("\n")
+    return result
+  }
+
+  printStatement(){
+    let result = this.calculateStatement()
+    let printOut = this.resultFormatter(result)
     console.log(printOut)
     return printOut
   }
