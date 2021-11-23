@@ -29,10 +29,11 @@ describe("Bank", () =>{
 
   describe("calculateStatement", ()=>{
     it("iterates through transactions to calculate a statement", ()=>{
-      let modelCalculation = ["  10/01/2023 || 1000.00 ||  || 1000.00"," 13/01/2023 || 2000.00 ||  || 3000.00", " 14/01/2023 ||  || 500.00 || 2500.00"]
+      let modelCalculation = [" 10/01/2023 || 1000.00 ||  || 1000.00"," 13/01/2023 || 2000.00 ||  || 3000.00", " 14/01/2023 ||  || 500.00 || 2500.00"]
       barclays.deposit(1000, new Date("January 10, 2023"))
       barclays.deposit(2000, new Date("January 13, 2023"))
       barclays.withdraw(500, new Date("January 14, 2023"))
+      expect(barclays.calculateStatement()).toEqual(modelCalculation)
     })
   })
 
