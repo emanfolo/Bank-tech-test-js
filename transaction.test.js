@@ -1,4 +1,4 @@
-const Transaction = require("../lib/transaction");
+const Transaction = require("./transaction");
 const transaction = new Transaction(150, "credit")
 
 

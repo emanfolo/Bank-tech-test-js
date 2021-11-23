@@ -1,4 +1,4 @@
-const Formatter = require("../lib/formatter")
+const Formatter = require("./formatter")
 const formatter = new Formatter
 
 describe("Formatter", () =>{

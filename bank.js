@@ -1,5 +1,6 @@
 const Transaction = require("./transaction")
-const Formatter = require("./formatter")
+const Formatter = require("./formatter.js")
+
 
 class Bank {
   constructor(){
