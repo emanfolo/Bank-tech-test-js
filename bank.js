@@ -4,28 +4,29 @@ class Bank {
   constructor(){
     this.transactionHistory = []
     this.transactionClass = Transaction 
+    this.header = " date || credit || debit || balance"
   }
+
   withdraw(amount, date) {
     let transaction = new Transaction(amount, "debit", date)
-    this.recordTransaction(transaction)
+    this.recordWithdrawal(transaction)
     return amount
   }
 
+  recordWithdrawal(transaction){
+    let loggedTransaction = {"credit": 0, "debit": transaction.amount, "date": transaction.date, balanceChange: (-transaction.amount)}
+    this.transactionHistory.push(loggedTransaction)
+    return loggedTransaction
+  }
 
   deposit(amount, date) {
     let transaction = new Transaction (amount, "credit", date)
-    this.recordTransaction(transaction)
+    this.recordDeposit(transaction)
     return amount
   }
 
-  recordTransaction(transaction){
-    let loggedTransaction = null
-    if (transaction.type == "credit") {
-      loggedTransaction = {"credit": transaction.amount, "debit": 0, "date": transaction.date, balanceChange: (+transaction.amount)}
-    }
-    else if (transaction.type == "debit") {
-      loggedTransaction = {"credit": 0, "debit": transaction.amount, "date": transaction.date, balanceChange: (-transaction.amount)}
-    }
+  recordDeposit(transaction){
+    let loggedTransaction = {"credit": transaction.amount, "debit": 0, "date": transaction.date, balanceChange: (+transaction.amount)}
     this.transactionHistory.push(loggedTransaction)
     return loggedTransaction
   }
@@ -38,7 +39,7 @@ class Bank {
 
   resultFormatter(result){
     result.reverse()
-    result.unshift(" date || credit || debit || balance")
+    result.unshift(this.header)
     let formatted = result.join("\n")
     return formatted
   }

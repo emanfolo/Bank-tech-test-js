@@ -19,11 +19,19 @@ describe("Bank", () =>{
     })
   })
 
-  describe("recordTransaction", () =>{
-    it("saves a transaction in the form of an object", () =>{
+  describe("recordDeposit", () =>{
+    it("saves a deposit in the form of an object", () =>{
+      let mockTransactionObject = {amount: 30, type: "credit", date: testDate}
+      let modelDeposit = {credit: 30, debit: 0, date: testDate, balanceChange: 30}
+      expect(bank.recordDeposit(mockTransactionObject)).toEqual(modelDeposit)
+    })
+  })
+
+  describe("recordWithdrawal", () =>{
+    it("saves a withdrawal in the form of an object", () =>{
       let mockTransactionObject = {amount: 30, type: "debit", date: testDate}
-      let modelTransaction = {credit: 0, debit: 30, date: testDate, balanceChange: -30}
-      expect(bank.recordTransaction(mockTransactionObject)).toEqual(modelTransaction)
+      let modelWithdrawal = {credit: 0, debit: 30, date: testDate, balanceChange: -30}
+      expect(bank.recordWithdrawal(mockTransactionObject)).toEqual(modelWithdrawal)
     })
   })
 
