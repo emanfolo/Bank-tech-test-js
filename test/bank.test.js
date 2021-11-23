@@ -1,4 +1,4 @@
-const Bank = require("./bank")
+const Bank = require("../lib/bank")
 const bank = new Bank
 const halifax = new Bank
 const barclays = new Bank
